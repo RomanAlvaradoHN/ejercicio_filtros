@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Filtros de Imagen</title>
+</head>
+<body>
+    <h1>Ejercicio Django y OpenCV</h1>
+
+    <!-- Botón para seleccionar imagen -->
+    <!--<input type="file" id="imagen" accept="image/*">-->
+
+    <!-- Contenedor para mostrar la imagen -->
+    <div id="contenedor-imagen" style="margin-top: 20px;">
+        <!--<img id="imagen-mostrada" src="#" alt="Imagen" style="max-width: 100%; max-height: 400px;">-->
+        <img src="{% static 'django.jpg' %}" alt="imagen desde local">
+    </div>
+
+    <h2>Filtros</h2>
+
+    <!-- Radio buttons para seleccionar filtro -->
+    <input type="radio" id="inversion" name="filtro" value="inversion">
+    <label for="inversion">Inversión</label><br>
+
+    <input type="radio" id="blanco-negro" name="filtro" value="blanco-negro">
+    <label for="blanco-negro">Blanco y Negro</label><br>
+
+    <input type="radio" id="sepia" name="filtro" value="sepia">
+    <label for="sepia">Sepia</label><br>
+
+    <!-- Botón para aplicar el filtro -->
+    <button onclick="aplicarFiltro()">Aplicar Filtro</button>
+
+    <!-- Script para mostrar la imagen seleccionada -->
+    <script>
+        document.getElementById('imagen').addEventListener('change', function(e) {
+            var imagenMostrada = document.getElementById('imagen-mostrada');
+            imagenMostrada.src = URL.createObjectURL(e.target.files[0]);
+        });
+    </script>
+</body>
+</html>
